@@ -1,0 +1,3 @@
+pf maximalni mesic = 
+IF(MAX(data[mesic]) = 
+MAXX(ALL(data),data[mesic]),"#ff6347","	#00bfff")
