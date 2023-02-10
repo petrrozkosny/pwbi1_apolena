@@ -3,22 +3,3 @@ IF(MAX(data[mesic]) =
 MAXX(ALL(data),data[mesic]),"#ff6347","	#00bfff")
 
 
----------------------------
-
-Sloupec = 
-IF(
-    MONTH(data[datum]) >= 9,
-    RIGHT(
-    convert(
-    YEAR(data[datum]),STRING),2)
- 
-    
-    & "/" & 
-    RIGHT(
-    CONVERT(
-    YEAR(data[datum])+1,STRING),2)
-    ,
-    RIGHT(
-    CONVERT(
-    YEAR(data[datum])-1,STRING),2) & "/" & RIGHT(CONVERT(YEAR(data[datum]),STRING),2)
-)
