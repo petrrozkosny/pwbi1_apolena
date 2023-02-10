@@ -63,3 +63,17 @@ SUMX(
     FILTER(data,
     data[maximalni_teplota] > 20),
 data[srazky])
+
+
+
+_______________________________________________________
+
+09 pocet datumu v danem roce v ruzyni kdy neprselo = 
+ -- neprselo znamena, ze srazky=0
+
+ COUNTX(
+     FILTER(data,data[srazky] = 0
+     -- && je "a zároveň"
+     -- || je "nebo"
+     && data[lokalita] = "RUZYNE"),
+     data[datum])
