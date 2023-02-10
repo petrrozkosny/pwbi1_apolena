@@ -146,3 +146,17 @@ _____________________________________________________
 15 minimalni den v danem roce = 
 -- minimalni datum v danem roce
 MIN(data[datum])
+
+
+____________________________________________________
+
+24 maximalni srazky v dane lokalite v mesici prvniho datumu lokality = 
+MAXX(
+    FILTER(data,
+    data[mesic] = 
+    MONTH(
+    MIN(data[datum]))
+    &&
+    data[rok] =
+    YEAR(MIN(data[datum]))),
+data[srazky])
