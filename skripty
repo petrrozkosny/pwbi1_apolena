@@ -86,3 +86,27 @@ _______________________________________________________________
 MAXX(
     FILTER(data,data[mesic] = 7 || data[mesic] = 8),
 data[maximalni_teplota])
+
+
+_______________________________________________________
+
+11 maximum z maximalni teploty = 
+-- pokud je maximalni teplota v mesicich 7 nebo 8 v danem roce
+-- nejvyssi maximalni teplotou v mesicich 7 nebo 8 ve vsech letech,
+-- tak vracime "gold"
+
+IF(
+-- maximum z maximalni_teplota v danem roce v mesicich 7 nebo 8
+MAXX(
+    FILTER(data,
+    data[mesic] = 7 || data[mesic] = 8),
+data[maximalni_teplota])
+=
+-- maximum z maximalni_teplota ve vsech letech v mesicich 7 nebo 8
+
+MAXX(
+    FILTER(
+        ALL(data),
+        data[mesic] = 7 || data[mesic] = 8),
+data[maximalni_teplota]),"GOLD")
+
