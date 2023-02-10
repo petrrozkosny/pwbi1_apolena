@@ -118,3 +118,14 @@ MAXX(
     data[maximalni_teplota] = MAX(data[maximalni_teplota])),
 data[datum])
 
+________________________________________________
+
+13 maximalni teplota v mesici 7 v lokalite ruzyne = 
+-- v danem roce, maximum z maximalni teplota
+
+MAXX(
+    FILTER(data,
+    data[mesic] = 7
+    && data[lokalita] = "RUZYNE"),
+data[maximalni_teplota])
+
