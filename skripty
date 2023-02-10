@@ -2,4 +2,54 @@ pf maximalni mesic =
 IF(MAX(data[mesic]) = 
 MAXX(ALL(data),data[mesic]),"#ff6347","	#00bfff")
 
+________________________________
 
+01 suma srazek = 
+
+-- Scénář 1: Respektuji všechny filtry vizuálu, žádný filtr neruším, žádný nestavuji
+-- tj. používám základní agregační funkce typu: SUM(),MIN(),MAX()
+
+SUM(data[srazky])
+_______________________________
+
+02 suma srazek ruzyne = 
+-- Scénář 2: Respektuji filtry vizuálu a nastavuji další,
+-- tj. používám podmíněnou agregaci, tj. SUMX(FILTER()),MAXX(FILTER()),MINX(FILTER())
+SUMX(
+    --krok3: Funkce FILTER() vrací tabulku
+    FILTER(
+    --krok1: Funkce FILTER() prebira tabulku data filtrovanou vizualem    
+    data
+    --krok2: Funkce FILTER() nastavuje filtr na sloupecek [lokalita]
+    ,data[lokalita] = "RUZYNE"),
+    --krok4: Funkce SUMX() scita sloupec [srazky] 
+    -- tabulky vracene funkci FILTER()
+    data[srazky])
+    
+    
+_______________________________________________
+
+03 suma srazek vsechny roky = 
+-- Scénář 3: Ruším filtry vizuálu a nenastavuji další
+-- tj. použiji SUMX(ALL()),MINX(ALL())
+SUMX(
+    --krok1: Funkce ALL() vraci kopii tabulky data
+    -- se vsemi jejimi hodnotami
+    ALL(data),
+    --krok2: Funkce SUMX() scita sloupec [srazky]
+    -- tabulky vracene funkci ALL()
+    data[srazky])
+
+
+____________________________________________________
+
+04 suma srazek rok 2000 = 
+-- Scénář 4: Ruším filtry vizuálu a nastavuji si svoje
+-- tj. použiju kombinaci funkcí, SUMX(FILTER(ALL())), MAXX(FILTER(ALL()))
+--krok3: Funkce SUMX() scita sloupec [srazky] tabulky vracene funkci FILTER()
+SUMX(
+    --krok2: Funkce FILTER() nastavuje filtr na sloupec [rok]
+    -- tabulky vracene funkci ALl() a pote funkce FILTER() vraci tabulku
+    FILTER(
+        --krok1: Funkce ALL() vraci kopii tabulky data zbavenou vsech filtru
+    ALL(data),data[rok] = 2000),data[srazky])
