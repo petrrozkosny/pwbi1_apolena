@@ -110,3 +110,11 @@ MAXX(
         data[mesic] = 7 || data[mesic] = 8),
 data[maximalni_teplota]),"GOLD")
 
+_____________________________________________
+
+12 maximalni datum maximalni teploty v danem roce = 
+MAXX(
+    FILTER(data,
+    data[maximalni_teplota] = MAX(data[maximalni_teplota])),
+data[datum])
+
