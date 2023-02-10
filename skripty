@@ -160,3 +160,27 @@ MAXX(
     data[rok] =
     YEAR(MIN(data[datum]))),
 data[srazky])
+
+
+
+
+____________________________________________
+
+25 maximalni srazky mesic minimalniho datumu vsech lokalit = 
+
+-- minimalni datum ze vsech lokalit
+VAR minimalni_datum  =
+    MINX(
+        all(data),
+    data[datum])
+
+VAR mesic = MONTH(minimalni_datum)
+VAR rok = YEAR(minimalni_datum)
+RETURN
+    MAXX(
+        FILTER(DATA,
+        data[mesic] = mesic
+        && data[rok] = rok),
+    data[srazky])
+
+
