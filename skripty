@@ -77,3 +77,12 @@ _______________________________________________________
      -- || je "nebo"
      && data[lokalita] = "RUZYNE"),
      data[datum])
+
+
+_______________________________________________________________
+
+10 maximalni teplota v danem roce v mesicich 7 nebo 8 = 
+-- maximum ze sloupce maximalni_teplota
+MAXX(
+    FILTER(data,data[mesic] = 7 || data[mesic] = 8),
+data[maximalni_teplota])
