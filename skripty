@@ -139,3 +139,10 @@ ___________________________________________________
 MAX(data[maximalni_teplota])
 -
 MIN(data[minimalni_teplota])
+
+
+_____________________________________________________
+
+15 minimalni den v danem roce = 
+-- minimalni datum v danem roce
+MIN(data[datum])
