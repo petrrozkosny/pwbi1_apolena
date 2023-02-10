@@ -129,3 +129,13 @@ MAXX(
     && data[lokalita] = "RUZYNE"),
 data[maximalni_teplota])
 
+___________________________________________________
+
+14 rozdil mezi maximalni a minimalni teplotou v danem roce = 
+-- rozdil mezi maximem z maximalni teploty a minimem minimalni teploty
+-- v danem roce
+
+-- maximum z maximalni teploty v danem
+MAX(data[maximalni_teplota])
+-
+MIN(data[minimalni_teplota])
